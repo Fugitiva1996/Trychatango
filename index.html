@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#180d27">
+<title>FUGITIVA ONLINE ♡</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  --bg: #180d27;
+  --panel: #29143d;
+  --purple: #6600cc;
+  --pink: #ffb8e8;
+  --white: #fff0fb;
+  --line: rgba(255,184,232,.4);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 20% 20%, #54227666, transparent 40%),
+    radial-gradient(ellipse at 80% 80%, #a52b8c33, transparent 40%),
+    var(--bg);
+  color: var(--white);
+  font-family: 'Space Mono', monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ESTRELLAS */
+#stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  color: var(--pink);
+  opacity: .5;
+  animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .15; transform: scale(.7); }
+  to { opacity: .8; transform: scale(1.3); }
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  width: min(1050px, 94%);
+  margin: 25px auto;
+}
+
+/* BARRA SUPERIOR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid var(--line);
+  padding: 10px 15px;
+  background: #170c24dd;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.status { color: #9cffc6; }
+
+/* ENCABEZADO */
+header {
+  text-align: center;
+  padding: 55px 15px 35px;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  background: linear-gradient(#54227666, transparent);
+}
+
+.symbol {
+  color: var(--pink);
+  letter-spacing: 12px;
+  font-size: 18px;
+}
+
+h1 {
+  font-size: clamp(42px, 9vw, 88px);
+  line-height: .95;
+  margin: 18px 0;
+  color: var(--pink);
+  text-shadow:
+    3px 3px #6600cc,
+    6px 6px #000;
+  letter-spacing: -5px;
+}
+
+.subtitle {
+  font-size: 11px;
+  line-height: 2;
+  color: #e6c8f2;
+}
+
+/* MARQUEE */
+.marquee {
+  background: #6600cc;
+  color: white;
+  padding: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.marquee span {
+  display: inline-block;
+  animation: move 25s linear infinite;
+}
+
+@keyframes move {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
+}
+
+/* NAVEGACIÓN */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  border: 1px solid var(--line);
+  background: #211032;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--pink);
+  font-size: 11px;
+  border: 1px solid var(--line);
+  padding: 8px 13px;
+  transition: .3s;
+}
+
+nav a:hover {
+  background: var(--pink);
+  color: var(--bg);
+  box-shadow: 0 0 15px var(--pink);
+}
+
+/* CONTENIDO */
+.section {
+  margin-top: 22px;
+  border: 1px solid var(--line);
+  background: #29143de8;
+  padding: 22px;
+  box-shadow: 5px 5px #0005;
+}
+
+.section-title {
+  color: var(--pink);
+  font-size: 17px;
+  margin: 0 0 15px;
+}
+
+.description {
+  font-size: 12px;
+  line-height: 2;
+  color: #e8d6ef;
+}
+
+/* VENTANA DEL CHAT */
+.chat-window {
+  margin-top: 20px;
+  border: 1px solid var(--pink);
+  background: #170c24;
+  box-shadow: 0 0 25px #6600cc55;
+}
+
+.window-bar {
+  background: #6600cc;
+  padding: 11px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: white;
+}
+
+.window-content {
+  padding: 15px;
+}
+
+.chat-intro {
+  text-align: center;
+  color: var(--pink);
+  font-size: 11px;
+  line-height: 2;
+  margin-bottom: 15px;
+}
+
+/* CHATANGO REAL */
+#chatango-container {
+  width: 100%;
+  max-width: 100%;
+  min-height: 350px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* TARJETAS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.card {
+  border: 1px solid var(--line);
+  padding: 15px;
+  background: #29143d;
+  font-size: 10px;
+  line-height: 2;
+}
+
+.card strong {
+  color: var(--pink);
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 35px 10px;
+  color: #a98ab8;
+  font-size: 10px;
+  line-height: 2.2;
+}
+
+footer .heart {
+  color: var(--pink);
+  font-size: 20px;
+}
+
+@media(max-width:650px) {
+  .cards { grid-template-columns: 1fr; }
+  header { padding: 40px 10px; }
+  h1 { letter-spacing: -3px; }
+  .topbar { font-size: 8px; }
+  .section { padding: 15px; }
+  .window-content { padding: 8px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<div class="page">
+
+  <div class="topbar">
+    <span>FUGITIVA'S INTERNET CORNER</span>
+    <span class="status">● ONLINE</span>
+  </div>
+
+  <header id="home">
+    <div class="symbol">✧ ˚ · . ♡ . · ˚ ✧</div>
+
+    <h1>FUGITIVA<br>ONLINE</h1>
+
+    <div class="subtitle">
+      UN PEQUEÑO MUNDO DENTRO DE LA RED<br>
+      ENTRA DESPACIO · DEJA UNA SEÑAL · QUÉDATE UN RATO
+    </div>
+
+    <div class="symbol">｡ﾟ･ ☆ ･ﾟ｡</div>
+  </header>
+
+  <div class="marquee">
+    <span>
+      ♡ WELCOME TO THE LOST CHATROOM ♡
+      SOMOS COMO LOS HONGOS ♡
+      NO ESTAMOS PERDIDAS, ESTAMOS EN OTRA PARTE ♡
+    </span>
+  </div>
+
+  <nav>
+    <a href="#home">⌂ HOME</a>
+    <a href="#about">✧ ABOUT</a>
+    <a href="#chat">♡ CHAT ROOM</a>
+    <a href="#signals">✉ SEÑALES</a>
+  </nav>
+
+  <section class="section" id="about">
+    <h2 class="section-title">✧ HAS ENCONTRADO UNA SEÑAL</h2>
+
+    <p class="description">
+      Bienvenida a Fugitiva Online.
+      Este es un pequeño refugio digital, una habitación
+      dentro de la inmensidad de internet.
+
+      Un lugar para encontrarnos, conversar,
+      compartir ideas y dejar rastros.
+
+      No necesitas llegar con algo importante que decir.
+      A veces basta con escribir:
+      <span style="color:#ffb8e8">hola, ¿hay alguien ahí?</span>
+    </p>
+
+    <center style="color:#ffb8e8;font-size:20px">
+      ♡ ✧ ♡ ✧ ♡
+    </center>
+  </section>
+
+  <section class="section" id="chat">
+
+    <h2 class="section-title">♡ THE LOST CHATROOM</h2>
+
+    <p class="chat-intro">
+      ROOM: SOMOSCOMOLOSHONGOS<br>
+      UNA PEQUEÑA COMUNIDAD EN TIEMPO REAL
+    </p>
+
+    <div class="chat-window">
+
+      <div class="window-bar">
+        <span>● SOMOSCOMOLOSHONGOS.EXE</span>
+        <span>_ □ X</span>
+      </div>
+
+      <div class="window-content">
+
+        <div id="chatango-container">
+
+          <!-- CHATANGO ORIGINAL -->
+          <script
+            id="cid0020000455522693028"
+            data-cfasync="false"
+            async
+            src="https://st.chatango.com/js/gz/emb.js"
+            style="width: 250px; height: 350px;">
+            {
+              "handle":"somoscomoloshongos",
+              "arch":"js",
+              "styles":{
+                "a":"6600cc",
+                "b":100,
+                "c":"FFFFFF",
+                "d":"FFFFFF",
+                "k":"6600cc",
+                "l":"6600cc",
+                "m":"6600cc",
+                "n":"FFFFFF",
+                "p":"10",
+                "q":"6600cc",
+                "r":100,
+                "cnrs":"0.35",
+                "fwtickm":1
+              }
+            }
+          </script>
+          <!-- FIN CHATANGO -->
+
+        </div>
+
+      </div>
+    </div>
+
+    <p class="description" style="text-align:center">
+      ✧ Entra, saluda y deja una pequeña señal. ✧
+    </p>
+
+  </section>
+
+  <section class="cards" id="signals">
+
+    <div class="card">
+      <strong>01 / ENTRA</strong>
+      La puerta está abierta.
+      Puedes participar a tu ritmo.
+    </div>
+
+    <div class="card">
+      <strong>02 / COMPARTE</strong>
+      Una idea, una canción,
+      una pregunta o un recuerdo.
+    </div>
+
+    <div class="card">
+      <strong>03 / CONECTA</strong>
+      Las redes también se tejen
+      conversación por conversación.
+    </div>
+
+  </section>
+
+  <footer>
+    <div class="heart">♡ ✧ ♡ ✧ ♡</div>
+    FUGITIVA ONLINE · SOMOS COMO LOS HONGOS<br>
+    A LITTLE CORNER OF THE INTERNET<br>
+    BEST VIEWED WITH CURIOSITY AND NOSTALGIA
+  </footer>
+
+</div>
+
+<script>
+// ESTRELLAS ALEATORIAS
+const stars = document.getElementById("stars");
+
+for(let i = 0; i < 55; i++) {
+  const star = document.createElement("span");
+  star.className = "star";
+  star.textContent = ["✧", "✦", "·", "♡", "＊"][
+    Math.floor(Math.random() * 5)
+  ];
+
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.fontSize = (8 + Math.random() * 15) + "px";
+  star.style.animationDelay = Math.random() * 4 + "s";
+
+  stars.appendChild(star);
+}
+</script>
+
+</body>
+</html>
